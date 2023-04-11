@@ -17,8 +17,11 @@ class Fighter
 
     private int $life = self::MAX_LIFE;
 
-    private ?Weapon $weapon = null;
-    private ?Shield $shield = null;
+    private int $x;
+    private int $y;
+    private float $range = 1;
+
+    
 
     public function __construct(
         string $name,
@@ -36,55 +39,18 @@ class Fighter
     public function getDamage(): int
     {
         $damage = $this->getStrength();
-        if($this->getWeapon() !== null) {
-            $damage += $this->getWeapon()->getDamage();
-        }
+
         return $damage;
     }
 
     public function getDefense(): int
     {
         $defense = $this->getDexterity();
-        if ($this->getShield() !== null) {
-            $defense += $this->getShield()->getProtection();
-        }    
 
         return $defense;
     }
 
-     /**
-     * Get the value of weapon
-     */ 
-    public function getWeapon(): ?Weapon
-    {
-        return $this->weapon;
-    }
-
-    /**
-     * Set the value of weapon
-     *
-     */ 
-    public function setWeapon(Weapon $weapon): void
-    {
-        $this->weapon = $weapon;
-    }
-
-    /**
-     * Get the value of shield
-     */ 
-    public function getShield(): ?Shield
-    {
-        return $this->shield;
-    }
-
-    /**
-     * Set the value of shield
-     *
-     */ 
-    public function setShield(?Shield $shield): void
-    {
-        $this->shield = $shield;
-    }
+    
 
     /**
      * Get the value of name
@@ -169,5 +135,53 @@ class Fighter
     public function setDexterity($dexterity): void
     {
         $this->dexterity = $dexterity;
+    }
+
+    /**
+     * Get the value of x
+     */ 
+    public function getX(): int
+    {
+        return $this->x;
+    }
+
+    /**
+     * Set the value of x
+     *
+     * @return  self
+     */ 
+    public function setX(int $x): self
+    {
+        $this->x = $x;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of y
+     */ 
+    public function getY(): int
+    {
+        return $this->y;
+    }
+
+    /**
+     * Set the value of y
+     *
+     * @return  self
+     */ 
+    public function setY(int $y): self
+    {
+        $this->y = $y;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of range
+     */ 
+    public function getRange(): float
+    {
+        return $this->range;
     }
 }
